@@ -1,4 +1,5 @@
-/* General body styles */
+
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,7 +7,7 @@ body {
     background-color: #f5f5f5;
 }
 
-/* Header styling */
+
 header {
     background-color: #333;
     color: white;
@@ -25,6 +26,7 @@ header img {
     display: inline-block;
     vertical-align: middle;
 }
+
 
 nav ul {
     list-style-type: none;
@@ -49,32 +51,42 @@ nav ul li a:hover {
     color: #ff9900;
 }
 
-/* Main content styling */
+
 .container {
     padding: 40px 20px;
-    text-align: center;
-}
-
-.intro {
+    max-width: 900px;
+    margin: 0 auto;
     background-color: white;
-    padding: 30px;
-    margin: 20px auto;
-    max-width: 800px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.intro h2 {
+
+.container h2 {
     color: #333;
     margin-bottom: 20px;
+    text-align: center;
+}
+
+.intro {
+    padding: 30px;
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.intro h2 {
+    color: #333;
 }
 
 .intro p {
     color: #666;
     line-height: 1.6;
     margin-bottom: 20px;
-    text-align: left;
 }
+
 
 .buttons {
     display: flex;
@@ -96,369 +108,95 @@ nav ul li a:hover {
     background-color: #ff9900;
 }
 
-/* Footer styling */
+
+.courses {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.course-checkboxes label {
+    display: block;
+    margin-bottom: 10px; /* Ajoute de l'espace entre les options des cours */
+}
+
+.course-box {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.course-box h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.course-box p {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.course-box button {
+    background-color: #333;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.course-box button:hover {
+    background-color: #ff9900;
+}
+
+
 footer {
     background-color: #333;
     color: white;
     padding: 20px;
+    display: flex;
+    justify-content: space-around; /* Espacement égal entre les sections */
+    align-items: center;
+    text-align: left;
+    flex-wrap: wrap;
+}
+
+footer .left, 
+footer .right, 
+footer .footer-center {
+    flex: 1;
     text-align: center;
+    margin-top: 10px;
+}
+
+footer .left {
+    text-align: left;
+}
+
+footer .right {
+    text-align: right;
 }
 
 footer a {
-    color: #ff9900;
+    color: #ff9900; /* Couleur orange pour les liens */
     text-decoration: none;
 }
 
 footer a:hover {
-    color: white;
+    color: white; /* Blanc au survol */
 }
-
-
-/* Main content styling for Six-Month Courses */
-.container {
-    padding: 40px 20px;
-}
-
-.container h2 {
-    text-align: center;
-    font-size: 28px;
-    margin-bottom: 30px;
-    color: #333;
-}
-
-.courses {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.course-box {
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 20px;
-    width: 200px;
-    text-align: center;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.course-box h3 {
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.course-box p {
-    color: #666;
-    margin-bottom: 15px;
-}
-
-.course-box button {
-    background-color: #333;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.course-box button:hover {
-    background-color: #ff9900;
-}
-
-/* Footer styling specific to this page */
 footer {
-    background-color: #333;
-    color: white;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    text-align: left;
+    margin-top: 40px; /* Ajoute un espace au-dessus du pied de page */
 }
 
-footer .left {
-    flex: 1;
-    display: flex;
-    justify-content: space-around;
-}
 
-footer .left a {
-    margin: 0 5px;
-    color: #ff9900;
-    text-decoration: none;
-}
 
-footer .left a:hover {
-    color: white;
-}
-
-footer .right {
-    flex: 1;
-    text-align: right;
-}
-
-footer .footer-center {
-    flex-basis: 100%;
-    text-align: center;
-    margin-top: 10px;
-}
-/* Main content styling for Sewing Course */
-.container {
-    padding: 40px 20px;
-    max-width: 900px;
-    margin: 0 auto;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.container h2 {
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.course-details {
-    text-align: left;
-    line-height: 1.8;
-    color: #666;
-}
-
-.course-details ul {
-    padding-left: 20px;
-    list-style-type: disc;
-}
-
-.course-details ul li {
-    margin-bottom: 10px;
-}
-
-/* Footer styling remains the same */
-/* Main content styling for Life Skills Course */
-.container {
-    padding: 40px 20px;
-    max-width: 900px;
-    margin: 0 auto;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.container h2 {
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.course-details {
-    text-align: left;
-    line-height: 1.8;
-    color: #666;
-}
-
-.course-details ul {
-    padding-left: 20px;
-    list-style-type: disc;
-}
-
-.course-details ul li {
-    margin-bottom: 10px;
-}
-
-/* Footer styling remains the same */
-/* Main content styling for Landscaping Course */
-.container {
-    padding: 40px 20px;
-    max-width: 900px;
-    margin: 0 auto;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.container h2 {
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.course-details {
-    text-align: left;
-    line-height: 1.8;
-    color: #666;
-}
-
-.course-details ul {
-    padding-left: 20px;
-    list-style-type: disc;
-}
-
-.course-details ul li {
-    margin-bottom: 10px;
-}
-
-/* Footer styling remains the same */
-/* Main content styling for Garden Maintenance Course */
-.container {
-    padding: 40px 20px;
-    max-width: 900px;
-    margin: 0 auto;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.container h2 {
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.course-details {
-    text-align: left;
-    line-height: 1.8;
-    color: #666;
-}
-
-.course-details ul {
-    padding-left: 20px;
-    list-style-type: disc;
-}
-
-.course-details ul li {
-    margin-bottom: 10px;
-}
-
-/* Footer styling remains the same */
-/* Main content styling for Six-Week Courses */
-.container {
-    padding: 40px 20px;
-    text-align: center;
-}
-
-.container h2 {
-    color: #333;
-    margin-bottom: 30px;
-}
-
-.courses {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.course-box {
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 20px;
-    width: 200px;
-    text-align: center;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.course-box h3 {
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.course-box p {
-    color: #666;
-    margin-bottom: 15px;
-}
-
-.course-box button {
-    background-color: #333;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.course-box button:hover {
-    background-color: #ff9900;
-}
-
-/* Footer styling remains the same */
-/* Main content styling for First Aid Course */
-.container {
-    padding: 40px 20px;
-    max-width: 900px;
-    margin: 0 auto;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.container h2 {
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.course-details {
-    text-align: left;
-    line-height: 1.8;
-    color: #666;
-}
-
-.course-details ul {
-    padding-left: 20px;
-    list-style-type: disc;
-}
-
-.course-details ul li {
-    margin-bottom: 10px;
-}
-
-/* Footer styling remains the same */
-/* Main content styling for Cooking Course */
-.container {
-    padding: 40px 20px;
-    max-width: 900px;
-    margin: 0 auto;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.container h2 {
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.course-details {
-    text-align: left;
-    line-height: 1.8;
-    color: #666;
-}
-
-.course-details ul {
-    padding-left: 20px;
-    list-style-type: disc;
-}
-
-.course-details ul li {
-    margin-bottom: 10px;
-}
-
-/* Footer styling remains the same */
-/* Main content styling for Contact Us page */
-.container {
-    padding: 40px 20px;
-    max-width: 900px;
-    margin: 0 auto;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.container h2 {
-    color: #333;
-    margin-bottom: 20px;
-}
-
+/* Form Section */
 .form-section {
     display: flex;
     justify-content: space-between;
@@ -496,7 +234,7 @@ footer .footer-center {
     background-color: #ff9900;
 }
 
-/* Contact information box */
+/* Contact Information Box */
 .contact-info {
     border: 1px solid #ccc;
     padding: 20px;
@@ -504,118 +242,3 @@ footer .footer-center {
     background-color: #f9f9f9;
 }
 
-/* Footer styling remains the same */
-/* Main content styling for Child Minding Course */
-.container {
-    padding: 40px 20px;
-    max-width: 900px;
-    margin: 0 auto;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.container h2 {
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.course-details {
-    text-align: left;
-    line-height: 1.8;
-    color: #666;
-}
-
-.course-details ul {
-    padding-left: 20px;
-    list-style-type: disc;
-}
-
-.course-details ul li {
-    margin-bottom: 10px;
-}
-
-/* Footer styling remains the same */
-/* Main content styling for Fee Calculation page */
-.container {
-    padding: 40px 20px;
-    max-width: 900px;
-    margin: 0 auto;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.container h2 {
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.form-section {
-    display: flex;
-    justify-content: space-between;
-}
-
-.form-section div {
-    width: 45%;
-}
-
-.form-section input[type="text"],
-.form-section input[type="email"] {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.course-checkboxes label {
-    display: block;
-    margin: 10px 0;
-}
-
-.form-section button {
-    background-color: #333;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
-}
-
-.form-section button:hover {
-    background-color: #ff9900;
-}
-
-.total-display {
-    margin-top: 20px;
-}
-
-/* Footer styling remains the same */
-/* Main content styling for About Us page */
-.container {
-    padding: 40px 20px;
-    max-width: 900px;
-    margin: 0 auto;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.container h2 {
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.about-section {
-    text-align: left;
-    line-height: 1.8;
-    color: #666;
-}
-
-.about-section p {
-    margin-bottom: 20px;
-}
-
-/* Footer styling remains the same */

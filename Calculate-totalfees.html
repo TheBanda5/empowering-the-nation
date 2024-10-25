@@ -5,14 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fee Calculation | Empowering the Nation</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         function calculateTotal() {
             const courses = document.querySelectorAll('input[name="course"]:checked');
             let total = 0;
-            courses.forEach((course) => {
+            let courseCount = courses.length;
+
+            courses.forEach(function(course) {
                 total += parseInt(course.value);
             });
-            document.getElementById('total').value = "R" + total;
+
+            let discount = 0;
+            if (courseCount === 2) {
+                discount = 0.05;
+            } else if (courseCount === 3) {
+                discount = 0.10;
+            } else if (courseCount > 3) {
+                discount = 0.15;
+            }
+
+            let totalWithDiscount = total - (total * discount);
+            const taxRate = 0.15;
+            let totalWithTax = totalWithDiscount + (totalWithDiscount * taxRate);
+
+            document.getElementById('total').value = "R" + totalWithTax.toFixed(2);
+        }
+
+        function sendEmail() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const total = document.getElementById('total').value;
+
+            const selectedCourses = Array.from(document.querySelectorAll('input[name="course"]:checked'))
+                .map(course => course.parentElement.textContent.trim())
+                .join(', ');
+
+            fetch('/send-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    selectedCourses: selectedCourses.split(', '),
+                    totalCost: total
+                })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Email sent successfully:", data);
+            })
+            .catch((error) => {
+                console.error("Error sending email:", error);
+            });
+        }
+
+        function handleSubmit() {
+            calculateTotal();
+            sendEmail();
         }
     </script>
 </head>
@@ -34,7 +91,6 @@
     <div class="container">
         <h2>Fee Calculation</h2>
         <div class="form-section">
-            <!-- User information form -->
             <div>
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" placeholder="Enter your name">
@@ -46,7 +102,6 @@
                 <input type="email" id="email" name="email" placeholder="Enter your email address">
             </div>
             
-            <!-- Course selection and calculation form -->
             <div>
                 <div class="course-checkboxes">
                     <label><input type="checkbox" name="course" value="1500"> First Aid Course - R1500</label>
@@ -64,20 +119,25 @@
                     <input type="text" id="total" readonly>
                 </div>
 
-                <button type="submit">Submit</button>
+                <button type="button" onclick="handleSubmit()">Submit</button>
             </div>
         </div>
     </div>
 
     <footer>
-        <a href="About Us.html">About Us</a> | 
-        <a href="Calculate-totalfees.html">Fees Calculation</a> | 
-        <a href="Contact-us.html">Contact Us</a>
-        <br><br>
-        Phones: (012) 345-6789<br>
-        Email: contact@Empoweringnation.com<br>
-        Address: 123 Avenue Street, Johannesburg, SA<br><br>
-        &copy; 2024 Empowering the Nation
+        <div class="left">
+            <a href="About Us.html">About Us</a> | 
+            <a href="Calculate-totalfees.html">Fees Calculation</a> | 
+            <a href="Contact-us.html">Contact Us</a>
+        </div>
+        <div class="footer-center">
+            Phones: (012) 345-6789<br>
+            Email: contact@Empoweringnation.com<br>
+            Address: 123 Avenue Street, Johannesburg, SA
+        </div>
+        <div class="right">
+            &copy; 2024 Empowering the Nation
+        </div>
     </footer>
 </body>
 </html>
