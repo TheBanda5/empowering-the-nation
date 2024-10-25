@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("sU1KoUv-1xwxrdJTeY");
+        })();
+    </script>   
+
+<script type="text/javascript"
+src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+(function(){
+emailjs.init({
+publicKey: "sU1KoUv-1xwxrdJTe",
+});
+})();
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fee Calculation | Empowering the Nation</title>
@@ -12,18 +29,19 @@
             let total = 0;
             let courseCount = courses.length;
 
+            if (courseCount === 0) {
+                alert("Please select at least one course.");
+                return;
+            }
+
             courses.forEach(function(course) {
                 total += parseInt(course.value);
             });
 
             let discount = 0;
-            if (courseCount === 2) {
-                discount = 0.05;
-            } else if (courseCount === 3) {
-                discount = 0.10;
-            } else if (courseCount > 3) {
-                discount = 0.15;
-            }
+            if (courseCount === 2) discount = 0.05;
+            else if (courseCount === 3) discount = 0.10;
+            else if (courseCount > 3) discount = 0.15;
 
             let totalWithDiscount = total - (total * discount);
             const taxRate = 0.15;
@@ -33,37 +51,42 @@
         }
 
         function sendEmail() {
-            const name = document.getElementById('name').value;
+            const name = document.getElementById('email').value;
             const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
             const total = document.getElementById('total').value;
+
+            if (!name) {
+                alert("Please enter your name.");
+                return;
+            }
+            if (!email) {
+                alert("Please enter your email address.");
+                return;
+            }
+            if (!phone) {
+                alert("Please enter your phone number.");
+                return;
+            }
 
             const selectedCourses = Array.from(document.querySelectorAll('input[name="course"]:checked'))
                 .map(course => course.parentElement.textContent.trim())
                 .join(', ');
 
-            fetch('/send-email', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    name: name,
-                    email: email,
-                    selectedCourses: selectedCourses.split(', '),
-                    totalCost: total
-                })
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log("Email sent successfully:", data);
+            const templateParams = {
+                to_name: name,
+                from_name: "Empowering the Nation",
+                message: `Hello ${name},\n\nYou have enrolled in the following courses: ${selectedCourses}.\nTotal Cost: ${total}\n\nBest wishes,\nEmpowering the Nation Team`
+            };
+
+            emailjs.send("service_8nwdi2e", "template_dm3a15h", templateParams)
+            .then((response) => {
+                console.log('Email sent successfully:', response.status, response.text);
+                alert("Your email has been sent successfully!");
             })
             .catch((error) => {
-                console.error("Error sending email:", error);
+                console.error('Error sending email:', error);
+                alert("There was an error sending your email. Please try again later.");
             });
         }
 
